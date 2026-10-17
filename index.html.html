@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jelajah Teks Eksplanasi - Kelas VI</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EAF6F7;--card:#fff;--ink:#17303A;--mut:#4F6772;--pri:#0F6A78;--pri2:#0A4C57;--sun:#FFC93C;--cor:#E8553F;--ok:#1E8E4E;--line:#BFDDE1;--g1:#7FD8FF;--gm:#FFE98A;--g2:#FFB3D9;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root[data-theme="off"]{--bg:#0F1E24;--g1:#0E3340;--g2:#2E2145;--card:#17303A;--ink:#EAF4F6;--mut:#A8C2CA;--pri:#4FC3D3;--pri2:#2A8C9A;--line:#2C4B56;--cor:#FF8672;--ok:#5FD08D}}
+:root[data-theme="off"]{--bg:#0F1E24;--g1:#0E3340;--g2:#2E2145;--card:#17303A;--ink:#EAF4F6;--mut:#A8C2CA;--pri:#4FC3D3;--pri2:#2A8C9A;--line:#2C4B56;--cor:#FF8672;--ok:#5FD08D}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background:radial-gradient(circle,rgba(255,255,255,.75) 0 5px,transparent 6px) 0 0/54px 54px,linear-gradient(160deg,var(--g1),var(--gm,#FFF4B8) 50%,var(--g2)) fixed;color:var(--ink);font:18px/1.6 Nunito,system-ui,sans-serif}
+.deco{font-size:2rem;letter-spacing:.5rem;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px)}}
+@keyframes pulse{50%{transform:scale(1.1)}}
+.sunr{animation:pulse 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.rb{opacity:0;transition:opacity 1s}.rb path{fill:none;stroke-width:12}
+[data-step="4"] .rb{opacity:.9}
+.cf{position:fixed;top:-2rem;font-size:1.7rem;animation:cf 3s linear forwards;pointer-events:none;z-index:20}
+@keyframes cf{to{transform:translateY(110vh) rotate(360deg)}}
+@keyframes drift{from{transform:translateX(-30px)}to{transform:translateX(50px)}}
+@keyframes fly{from{transform:translateX(-60px)}to{transform:translateX(680px)}}
+@keyframes flap{50%{transform:scaleY(.4)}}
+@keyframes bobb{50%{transform:translateY(-6px) rotate(4deg)}}
+@keyframes jump{0%,60%,100%{transform:translateY(0);opacity:0}70%{opacity:1}80%{transform:translateY(-35px);opacity:1}90%{transform:translateY(0);opacity:1}}
+@keyframes sway{to{transform:rotate(4deg)}}
+.dc{animation:drift 9s ease-in-out infinite alternate}
+.bird{animation:fly 14s linear infinite}.bird path{animation:flap .5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.boat,.fish,.sway{transform-box:fill-box}.boat{transform-origin:center;animation:bobb 2.5s ease-in-out infinite}.fish{transform-origin:center;animation:jump 5s ease-in-out infinite}
+.sway{transform-origin:bottom center;animation:sway 3s ease-in-out infinite alternate}
+.fl span{position:fixed;font-size:2.2rem;animation:bob 4s ease-in-out infinite;pointer-events:none;z-index:0}
+main{position:relative;z-index:1}
+@media(max-width:700px){.fl{display:none}}
+button.btn:hover{transform:translateY(-3px) rotate(-1deg)}
+h1,h2,h3{font-family:'Baloo 2',Nunito,sans-serif;line-height:1.15;margin:0 0 .5rem}
+header{padding:1.5rem 1rem 1rem;text-align:center}
+header h1{font-size:clamp(2rem,7vw,3.4rem);background:linear-gradient(90deg,#E8553F,#E8A400,#1E8E4E,#1E88C9,#8E44C7);-webkit-background-clip:text;background-clip:text;color:transparent}
+header p{margin:0;color:var(--mut)}
+nav{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;padding:.5rem;position:sticky;top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(8px);z-index:5}
+nav button{--c:#B36B00;font:700 1.05rem Nunito,sans-serif;padding:.6rem 1.2rem;border-radius:99px;border:3px solid var(--c);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:0 4px 0 var(--c)}
+nav button:nth-child(2){--c:#1E88C9}nav button:nth-child(3){--c:#8E44C7}nav button:nth-child(4){--c:#D4432D}
+nav button[aria-selected=true]{background:var(--c);color:#fff;transform:translateY(3px);box-shadow:0 1px 0 var(--c)}
+main{max-width:860px;margin:0 auto;padding:1rem}
+section{display:none}section.on{display:block}
+.card{background:var(--card);border:2px solid var(--line);border-top:10px solid var(--c1,#FFB800);border-radius:18px;padding:1.2rem;margin-bottom:1rem;box-shadow:0 6px 0 rgba(0,0,0,.07)}
+#materi .card{--c1:#1E88C9}#animasi .card{--c1:#8E44C7}#game .card{--c1:#E8553F}
+.card h2{color:color-mix(in srgb,var(--c1,#FFB800) 65%,var(--ink))}
+ul,ol{padding-left:1.3rem}li{margin:.35rem 0}
+.tag{display:inline-block;padding:.1rem .6rem;border-radius:8px;font-weight:700;font-size:.85rem;color:#17303A}
+.t1{background:#FFD97A}.t2{background:#9FDDE6}.t3{background:#F9B4A8}
+.txt p{margin:.5rem 0;padding:.5rem .8rem;border-left:6px solid}
+.txt .a{border-color:#FFC93C}.txt .b{border-color:#4FB6C6}.txt .c{border-color:#E8553F}
+.k{background:rgba(255,201,60,.35);border-radius:4px;padding:0 .2rem;font-weight:700}
+button.btn{font:700 1rem Nunito,sans-serif;padding:.65rem 1.2rem;border-radius:12px;border:0;background:linear-gradient(135deg,#1E88C9,#8E44C7);color:#fff;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+button.btn.alt{background:var(--sun);color:#17303A}
+button:focus-visible,input:focus-visible{outline:3px solid var(--cor);outline-offset:2px}
+.ctrl{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem}
+svg.scene{width:100%;height:auto;border-radius:14px;display:block}
+.cap{min-height:5.5rem;margin-top:.8rem;font-size:1.05rem}
+.dots{display:flex;gap:.4rem;margin-top:.5rem}.dots i{flex:1;height:8px;border-radius:4px;background:var(--line)}.dots i.on{background:var(--cor)}
+/* animasi */
+.vapor,.cloud,.rain,.river,.sunr{transition:opacity .8s}
+.vapor,.rain,.river{opacity:0}.cloud{opacity:.25}
+[data-step="1"] .vapor{opacity:1}[data-step="1"] .vapor path{animation:rise 2.2s linear infinite}
+[data-step="2"] .cloud,[data-step="3"] .cloud,[data-step="4"] .cloud{opacity:1}
+[data-step="2"] .cloud{animation:grow 3s ease-out}
+[data-step="3"] .cloud .c1{fill:#7C8B93}[data-step="3"] .rain{opacity:1}[data-step="3"] .rain line{animation:fall .8s linear infinite}
+[data-step="4"] .river{opacity:1}[data-step="4"] .river path{animation:flow 1.2s linear infinite}
+.vapor path{fill:none;stroke:#fff;stroke-width:4;stroke-linecap:round;stroke-dasharray:6 10}
+.rain line{stroke:#2C7FB8;stroke-width:3;stroke-linecap:round}
+.river path{fill:none;stroke:#2C7FB8;stroke-width:5;stroke-dasharray:10 8;stroke-linecap:round}
+@keyframes rise{from{transform:translateY(0);opacity:1}to{transform:translateY(-70px);opacity:0}}
+@keyframes fall{from{transform:translateY(-10px);opacity:1}to{transform:translateY(40px);opacity:.2}}
+@keyframes flow{to{stroke-dashoffset:-36}}
+@keyframes grow{from{transform:scale(.6)}to{transform:scale(1)}}
+.cloud{transform-box:fill-box;transform-origin:center}
+/* game */
+.teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem}
+.team{--tc:#1E88C9;border:3px solid var(--tc);border-radius:14px;padding:.6rem;text-align:center;background:color-mix(in srgb,var(--tc) 14%,var(--card));transition:transform .3s}
+.team:nth-child(2){--tc:#E8553F}.team:nth-child(3){--tc:#1E8E4E}.team:nth-child(4){--tc:#8E44C7}.team:nth-child(5){--tc:#E8A400}
+.team.turn{transform:scale(1.06);box-shadow:0 0 0 5px var(--sun)}
+.team b{display:block;font-family:'Baloo 2',sans-serif;font-size:2.2rem;color:color-mix(in srgb,var(--tc) 75%,var(--ink))}
+input[type=text]{font:inherit;padding:.5rem .7rem;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);width:100%}
+.opt{display:block;width:100%;text-align:left;margin:.45rem 0;padding:.75rem 1rem;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.opt{border-left-width:12px}
+.opt:nth-child(1){border-left-color:#E8553F}.opt:nth-child(2){border-left-color:#E8A400}.opt:nth-child(3){border-left-color:#1E8E4E}.opt:nth-child(4){border-left-color:#8E44C7}
+.opt:hover:not(:disabled){transform:translateX(4px);border-color:var(--pri)}
+.opt.ok{background:var(--ok);border-color:var(--ok);color:#fff}.opt.no{background:var(--cor);border-color:var(--cor);color:#fff}
+.fb{min-height:3.2rem;font-weight:700}
+.mut{color:var(--mut)}
+.guide{display:flex;gap:.7rem;align-items:flex-end;margin-top:.8rem}
+.guide .bub{flex:1;margin:0;position:relative}
+.bub::before{content:"";position:absolute;left:-12px;bottom:26px;border:10px solid transparent;border-left:0;border-right-color:var(--line)}
+.kid{width:120px;flex:none;animation:bob 3s ease-in-out infinite}
+#arm{transform-origin:82px 108px;transform:rotate(-130deg);transition:transform .6s ease}
+#mouth,.eye{transform-box:fill-box;transform-origin:center}
+.eye{animation:blink 4s infinite}
+.kid.talk #mouth{animation:mth .25s ease-in-out infinite alternate}
+@keyframes mth{to{transform:scaleY(2.6)}}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.ch{width:clamp(70px,16vw,110px);flex:none}.guide .ch{width:120px}
+.ch svg{width:100%;display:block;animation:bob 3s ease-in-out infinite}
+.ch .arm{transform-origin:82px 108px;transform:rotate(-12deg);transition:transform .3s}
+.ch .arml{transform-origin:28px 108px;transform:rotate(12deg);transition:transform .3s}
+.ch.cheer .arm{transform:rotate(-165deg)}.ch.cheer .arml{transform:rotate(165deg)}
+.ch .mo{fill:none;stroke:#B3342A;stroke-width:3;stroke-linecap:round;transform-box:fill-box;transform-origin:center}
+.ch.cheer .mo{fill:#B3342A;transform:scale(1.5)}.ch.oops .mo{transform:rotate(180deg)}
+.ch .fx{font-size:24px}
+.ch.cheer svg{animation:hop .5s ease-in-out 4}.ch.oops svg{animation:shake .5s ease-in-out 2}
+@keyframes hop{50%{transform:translateY(-22px)}}
+@keyframes shake{25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
+.stage{display:flex;align-items:flex-end;gap:.5rem;margin:1rem 0 .5rem}
+.stage .sb{flex:1;margin:0;text-align:center;font-weight:700;min-height:4.5rem;display:flex;align-items:center;justify-content:center}
+.bubr::before{left:auto;right:-12px;border:10px solid transparent;border-right:0;border-left-color:var(--line)}
+#bq{cursor:pointer;font-size:.98rem}
+.byp{display:inline-block;margin-top:.5rem;padding:.25rem .9rem;border-radius:99px;background:rgba(255,255,255,.75);border:2px solid #8E44C7;font-size:.95rem;color:#17303A}
+
+.fpg{position:fixed;right:.7rem;bottom:calc(.7rem + env(safe-area-inset-bottom,0px));z-index:30;display:flex;gap:.35rem}
+.fpg button{font:700 .78rem Nunito,sans-serif;padding:.3rem .6rem;border-radius:99px;border:2px solid #17303A;background:linear-gradient(135deg,#FFC93C,#FF8FB8);color:#17303A;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.3)}
+.fpg button:hover{transform:translateY(-3px)}
+@media(max-width:400px){#palb{font-size:.75rem;padding:.3rem .6rem}.fpg button{font-size:.72rem;padding:.28rem .5rem}}
+/* Ganti tema dan tombol lanjut */
+.pal{position:fixed;left:.7rem;bottom:calc(.7rem + env(safe-area-inset-bottom,0px));z-index:30}
+#palb{font:700 .78rem Nunito,sans-serif;padding:.3rem .65rem;border-radius:99px;border:2px solid #17303A;background:#FFE98A;color:#17303A;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+#palm{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.5rem;padding:.6rem;border-radius:16px;background:#FFFBEA;border:3px solid #17303A}
+#palm[hidden]{display:none}
+#palm button{font:700 .95rem Nunito,sans-serif;text-align:left;padding:.4rem .8rem;border-radius:10px;border:2px solid transparent;background:#FFF3C4;color:#17303A;cursor:pointer}
+#palm button.on{border-color:#17303A;background:#FFC93C}
+.pager{display:flex;justify-content:space-between;gap:.6rem;flex-wrap:wrap;margin:1.2rem 0 5rem}
+.pager .btn{font-size:1.05rem;padding:.8rem 1.3rem}
+body[data-pal=permen],body[data-pal=permen][data-tab]{--g1:#FFB3E0;--gm:#E6C8FF;--g2:#B8E6FF}
+body[data-pal=permen] .card{--c1:#C77DFF!important;--c2:#FF8FC7!important}
+body[data-pal=permen] button.btn{background:linear-gradient(135deg,#C77DFF,#E5408F)}
+body[data-pal=alam],body[data-pal=alam][data-tab]{--g1:#A8F0A0;--gm:#FFF3A0;--g2:#8FE3D8}
+body[data-pal=alam] .card{--c1:#3DBE6B!important;--c2:#FFC93C!important}
+body[data-pal=alam] button.btn{background:linear-gradient(135deg,#2E9E4F,#1AA59A)}
+body[data-pal=senja],body[data-pal=senja][data-tab]{--g1:#FFB07A;--gm:#FFA3C4;--g2:#B79CFF}
+body[data-pal=senja] .card{--c1:#FF8A3D!important;--c2:#8E44C7!important}
+body[data-pal=senja] button.btn{background:linear-gradient(135deg,#E8553F,#8E44C7)}
+body[data-pal=samudra],body[data-pal=samudra][data-tab]{--g1:#6FC8FF;--gm:#9AF0E6;--g2:#A9B8FF}
+body[data-pal=samudra] .card{--c1:#1E88C9!important;--c2:#1CC8B0!important}
+body[data-pal=samudra] button.btn{background:linear-gradient(135deg,#1E88C9,#1CA89A)}
+/* Tema cerah berwarna */
+#tujuan .card{--c1:#FFB800;--c2:#FF8FB8;--stk:"⭐"}#materi .card{--c2:#3DBE6B;--stk:"✏️"}#animasi .card{--c2:#FF8FB8;--stk:"🎈"}#game .card{--c2:#FFC93C;--stk:"🎉"}
+.card{position:relative;background:linear-gradient(135deg,color-mix(in srgb,var(--c1,#FFB800) 30%,#fff),color-mix(in srgb,var(--c2,#FF8FB8) 34%,#fff))}
+.card:not(.bub):not(.sb)::after{content:var(--stk);position:absolute;right:.7rem;top:-1.2rem;font-size:1.9rem;animation:bob 3s ease-in-out infinite}
+.card h2::after{content:"";display:block;height:6px;width:80px;border-radius:4px;margin-top:.3rem;background:linear-gradient(90deg,var(--c1),var(--c2))}
+.card li::marker{color:var(--c1);font-weight:700}
+header::after{content:"";display:block;height:8px;border-radius:4px;margin:.7rem auto 0;width:min(420px,70%);background:linear-gradient(90deg,#E8553F,#FFC93C,#3DBE6B,#1E88C9,#8E44C7)}
+#bgfx{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+#bgfx span{position:absolute;opacity:.6;animation:flt 5s ease-in-out infinite}
+@keyframes flt{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-20px) rotate(8deg)}}
+#tujuan ol{list-style:none;padding:0}
+#tujuan ol li{background:rgba(255,255,255,.55);border-radius:14px;padding:.7rem 1rem;margin:.6rem 0;border-left:8px solid #FF8FB8;font-weight:700}
+#tujuan ol li:nth-child(1)::before{content:"🎬 "}#tujuan ol li:nth-child(2)::before{content:"⚖️ "}
+nav button{background:color-mix(in srgb,var(--c) 18%,#fff)}
+.opt:not(.ok):not(.no):nth-child(1){background:#FFE0D9}.opt:not(.ok):not(.no):nth-child(2){background:#FFF0C2}.opt:not(.ok):not(.no):nth-child(3){background:#D8F5DF}.opt:not(.ok):not(.no):nth-child(4){background:#E8DAFB}
+.mode{background:linear-gradient(135deg,#FFF3C4,#FFD9EC)}
+.wd{background:#FFF0C2}
+input[type=text],.ta{background:#FFF9D9}
+.seg button{background:#EBDDFB}
+.seg{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.7rem}
+.seg button{font:700 1rem Nunito,sans-serif;padding:.5rem 1rem;border-radius:99px;border:3px solid #8E44C7;background:var(--card);color:var(--ink);cursor:pointer}
+.seg button.on{background:#8E44C7;color:#fff}
+.brain line{stroke:#2C7FB8;stroke-width:3;stroke-linecap:round;animation:fall .8s linear infinite}
+[data-step="4"] .brain{opacity:.35}
+.flood{fill:#3C93C9;opacity:.82;transform-box:fill-box;transform-origin:bottom;transform:scaleY(.12);transition:transform 1.6s ease}
+[data-step="2"] .flood{transform:scaleY(.25)}[data-step="3"] .flood{transform:scaleY(.6)}[data-step="4"] .flood{transform:scaleY(1)}
+.run,.stump{opacity:0;transition:opacity .8s}.run path{fill:none;stroke:#3C93C9;stroke-width:4;stroke-linecap:round;stroke-dasharray:10 8;animation:flow 1.2s linear infinite}
+[data-step="2"] .run,[data-step="3"] .run,[data-step="2"] .stump,[data-step="3"] .stump,[data-step="4"] .stump{opacity:1}
+.flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem}
+.flip{font:700 1rem Nunito,sans-serif;min-height:130px;border-radius:16px;border:3px solid rgba(0,0,0,.15);padding:.8rem;cursor:pointer;color:#17303A;box-shadow:0 4px 0 rgba(0,0,0,.12)}
+.flip .bk,.flip.on .fr{display:none}.flip.on .bk{display:block}.flip.on{animation:fl .35s}
+@keyframes fl{from{transform:rotateY(90deg)}to{transform:rotateY(0)}}
+.fb4{background:#C9F0C5}
+.lbls{display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0}.lbls button{border:3px solid transparent;font:700 .95rem Nunito,sans-serif;cursor:pointer;padding:.3rem .8rem;border-radius:10px;color:#17303A}.lbls button.on{border-color:#17303A}
+.tip{background:#FFF3C4;color:#17303A;border-radius:12px;padding:.6rem .9rem}
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.6rem}
+.cmp div{border-radius:12px;padding:.6rem;font-size:.95rem;background:#E3F4FF;color:#17303A}.cmp div:first-child{background:#CFF3D6;border:3px solid #3DBE6B}.cmp b{display:block}
+.flow{display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;justify-content:center}.flow div{flex:1;min-width:130px;text-align:center;border-radius:14px;padding:.7rem;font-weight:700;color:#17303A}.flow small{display:block;font-weight:400}
+.fb1{background:#FFD97A}.fb2{background:#9FDDE6}.fb3{background:#F9B4A8}
+section::before{display:block;text-align:center;font-size:2rem;letter-spacing:.8rem;margin:.2rem 0 .8rem;animation:bob 3s ease-in-out infinite}
+section::after{position:fixed;right:1rem;bottom:.5rem;font-size:3.5rem;opacity:.22;pointer-events:none}
+#tujuan::before{content:"🚀 ⭐ 🎯 🌟 ✨"}#tujuan::after{content:"🚀"}
+#materi::before{content:"📚 ✏️ 💡 📝 🔬"}#materi::after{content:"📖"}
+#animasi::before{content:"☁️ 🌧️ 🌈 ☀️ 💧"}#animasi::after{content:"🌈"}
+#game::before{content:"🎮 🏆 ⭐ 🎉 🎈"}#game::after{content:"🏆"}
+body[data-tab=materi]{--g1:#8EEAB8;--gm:#FFF09A;--g2:#8EC8FF}
+body[data-tab=animasi]{--g1:#7EC4FF;--gm:#D2B8FF;--g2:#FFB8E6}
+body[data-tab=game]{--g1:#FFB870;--gm:#FFD0EA;--g2:#9BE3FF}
+.ta{width:100%;min-height:110px;font:inherit;padding:.6rem;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);margin:.45rem 0}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin-bottom:1rem}
+.mode{font:700 1.05rem Nunito,sans-serif;text-align:left;padding:.7rem;border-radius:14px;border:3px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.mode small{display:block;font-weight:400;color:var(--mut)}.mode.on{border-color:var(--cor);background:#FFF1E8}
+.tbar{height:12px;border-radius:6px;background:var(--line);overflow:hidden;margin-bottom:.6rem}
+.tbar i{display:block;height:100%;transform-origin:left;background:linear-gradient(90deg,#E8553F,#FFC93C,#3DBE6B)}
+#qc.gold{background:#FFF6C9;box-shadow:0 0 0 5px #FFC93C}
+.bd:not(:empty){display:inline-block;min-width:1.6rem;height:1.6rem;margin-right:.5rem;border-radius:50%;background:var(--cor);color:#fff;text-align:center;line-height:1.6rem}
+.wd{font:inherit;font-size:1.15rem;margin:.2rem;padding:.35rem .7rem;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.wd:hover:not(:disabled){border-color:var(--pri);transform:translateY(-2px)}
+.wd.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.wd.no{background:var(--cor);color:#fff;border-color:var(--cor)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="deco" aria-hidden="true">☀️ 🌈 ☁️ 🌧️ ⭐</div>
+  <h1>Jelajah Teks Eksplanasi</h1>
+  <p>Media belajar Bahasa Indonesia untuk kelas VI</p>
+  <span class="byp">✍️ Disusun oleh: <b>Siti Sopiah Kamilah, S.Pd</b></span>
+</header>
+<div class="pal"><div id="palm" hidden></div><button id="palb" aria-expanded="false" aria-label="Ganti tema warna">🎨 Ganti tema</button></div>
+<div class="fpg"><button id="fprev">◀ Menu</button><button id="fnext">Menu ▶</button></div>
+<div id="bgfx" aria-hidden="true"></div>
+<div class="fl" aria-hidden="true"><span style="left:2%;top:30%">🦋</span><span style="left:3%;top:72%;animation-delay:-1s">🌻</span><span style="right:3%;top:28%;animation-delay:-2s">🐝</span><span style="right:2%;top:68%;animation-delay:-3s">🌈</span></div>
+<nav role="tablist" aria-label="Menu">
+  <button role="tab" aria-selected="true" data-t="tujuan">🎯 Tujuan</button>
+  <button role="tab" aria-selected="false" data-t="materi">📖 Materi</button>
+  <button role="tab" aria-selected="false" data-t="animasi">🎬 Animasi</button>
+  <button role="tab" aria-selected="false" data-t="game">🎮 Permainan</button>
+</nav>
+<main>
+
+<section id="tujuan" class="on">
+  <div class="card">
+    <h2>🎯 Tujuan pembelajaran</h2>
+    <p>Setelah belajar dengan media ini, murid mampu:</p>
+    <ol>
+      <li>menganalisis informasi penting dalam tayangan video dengan tepat;</li>
+      <li>mengevaluasi kesesuaian struktur dan ciri kebahasaan teks eksplanasi dengan memberikan penjelasan yang tepat.</li>
+      
+      
+      
+    </ol>
+  </div>
+  <div class="card">
+    <h3>💡 Cara memakai media ini</h3>
+    <p>Baca <b>Materi</b>, tonton <b>Animasi</b> terjadinya hujan dan banjir sambil mencatat informasi pentingnya, lalu kerjakan <b>Permainan</b> secara mandiri untuk menguji pemahamanmu. Guru bisa menayangkan layar ini di depan kelas.</p>
+    <button class="btn" data-go="materi">Mulai belajar</button>
+  </div>
+</section>
+
+<section id="materi">
+  <div class="card">
+    <h2>🤔 Apa itu teks eksplanasi?</h2>
+    <p>Teks eksplanasi adalah teks yang <b>menjelaskan proses</b> terjadinya sesuatu, terutama fenomena alam dan sosial. Teks ini menjawab pertanyaan <i>mengapa</i> dan <i>bagaimana</i> sesuatu bisa terjadi. Tujuannya membuat pembaca paham urutan sebab dan akibatnya.</p>
+    <p class="tip">💡 Bayangkan teks eksplanasi seperti <b>rantai domino</b>: satu kejadian membuat kejadian berikutnya terjadi, sehingga prosesnya bisa dijelaskan tahap demi tahap.</p>
+    <p><b>Bedakan dengan teks lain:</b></p>
+    <div class="cmp"><div><b>✅ Eksplanasi</b>Menjelaskan proses. Contoh: Terjadinya hujan.</div><div><b>Narasi</b>Menceritakan kejadian. Contoh: Liburan ke pantai.</div><div><b>Deskripsi</b>Melukiskan benda atau tempat. Contoh: Indahnya pantai.</div><div><b>Prosedur</b>Menjelaskan langkah membuat. Contoh: Cara membuat teh.</div></div>
+  </div>
+  <div class="card">
+    <h2>🧱 Struktur teks</h2>
+    <ul>
+      <li><span class="tag t1">Pernyataan umum</span> membuka teks dan memperkenalkan fenomena yang akan dijelaskan.<br><i>Contoh: Hujan adalah turunnya air dari awan ke bumi.</i></li>
+      <li><span class="tag t2">Deret penjelas</span> inti teks. Memuat tahap-tahap proses secara berurutan, dengan hubungan sebab-akibat.<br><i>Contoh: Air menguap, lalu menjadi awan, sehingga hujan turun.</i></li>
+      <li><span class="tag t3">Interpretasi</span> penutup berupa kesimpulan atau pesan. Bagian ini boleh tidak ada.<br><i>Contoh: Jadi, hujan terjadi berulang seperti siklus.</i></li>
+    </ul>
+  </div>
+  <div class="card"><h2>🗺️ Peta struktur</h2><div class="flow"><div class="fb1">Pernyataan umum<small>Apa fenomenanya?</small></div><span>➡️</span><div class="fb2">Deret penjelas<small>Bagaimana prosesnya?</small></div><span>➡️</span><div class="fb3">Interpretasi<small>Apa kesimpulannya?</small></div></div></div>
+  <div class="card"><h2>🃏 Balik kartunya</h2><p>Jawab dulu dalam hati, lalu ketuk kartu untuk melihat jawabannya.</p><div class="flips">
+    <button class="flip fb1"><span class="fr">Bagian apa yang membuka teks dan memperkenalkan fenomena?</span><span class="bk">Pernyataan umum.<br>Contoh: Hujan adalah turunnya air dari awan ke bumi.</span></button>
+    <button class="flip fb2"><span class="fr">Bagian mana yang menjelaskan tahap-tahap proses secara berurutan?</span><span class="bk">Deret penjelas.<br>Cirinya: ada kata hubung sebab-akibat dan urutan.</span></button>
+    <button class="flip fb3"><span class="fr">Bagian mana yang berisi kesimpulan dan boleh tidak ada?</span><span class="bk">Interpretasi.<br>Contoh: Jadi, hujan terjadi berulang seperti siklus.</span></button>
+    <button class="flip fb4"><span class="fr">Sebutkan kata hubung sebab dan kata hubung akibat!</span><span class="bk">Sebab: karena, sebab.<br>Akibat: sehingga, akibatnya.</span></button>
+  </div></div>
+  <div class="card txt">
+    <h2>🌧️ Contoh: Terjadinya Hujan</h2>
+    <p class="a"><span class="tag t1">Pernyataan umum</span><br>Hujan adalah peristiwa turunnya air dari awan ke permukaan bumi. Hujan sangat penting bagi tumbuhan, hewan, dan manusia.</p>
+    <p class="b"><span class="tag t2">Deret penjelas</span><br>Panas matahari membuat air laut dan sungai <span class="k">menguap</span> menjadi uap air. <span class="k">Kemudian</span>, uap air naik ke langit dan mendingin <span class="k">sehingga</span> berubah menjadi titik-titik air kecil. Titik-titik itu berkumpul <span class="k">dan</span> membentuk awan. <span class="k">Karena</span> awan semakin berat, titik air jatuh ke bumi sebagai hujan.</p>
+    <p class="c"><span class="tag t3">Interpretasi</span><br>Dengan begitu, hujan terjadi melalui proses yang berulang. Mari kita jaga lingkungan agar air tetap bersih.</p>
+  </div>
+  <div class="card txt"><h2>🌊 Contoh: Terjadinya Banjir</h2>
+    <p class="a"><span class="tag t1">Pernyataan umum</span><br>Banjir adalah peristiwa meluapnya air hingga menggenangi daratan yang biasanya kering. Banjir dapat merusak rumah, jalan, dan lahan pertanian.</p>
+    <p class="b"><span class="tag t2">Deret penjelas</span><br>Banjir diawali oleh hujan deras yang turun terus-menerus. <span class="k">Karena</span> hutan gundul dan tanah tertutup sampah, air hujan tidak dapat terserap tanah. <span class="k">Akibatnya</span>, air mengalir deras ke sungai. <span class="k">Kemudian</span>, sungai yang dangkal dan tersumbat sampah tidak mampu menampung air <span class="k">sehingga</span> air meluap ke permukiman warga.</p>
+    <p class="c"><span class="tag t3">Interpretasi</span><br>Dengan demikian, banjir terjadi karena hujan deras dan kerusakan lingkungan. Mari menanam pohon dan membuang sampah pada tempatnya.</p>
+  </div>
+  <div class="card">
+    <h2>✏️ Ciri kebahasaan</h2>
+    <ul>
+      <li><b>Kata hubung sebab-akibat:</b> karena, sebab, sehingga, akibatnya, oleh karena itu. Fungsinya menunjukkan sebab dan akibat.<br><i>Contoh: Awan berat <span class="k">sehingga</span> hujan turun.</i></li>
+      <li><b>Kata hubung urutan waktu:</b> pertama, kemudian, lalu, setelah itu, akhirnya. Fungsinya membuat tahap proses runtut.<br><i>Contoh: Uap naik, <span class="k">kemudian</span> menjadi awan.</i></li>
+      <li><b>Istilah ilmiah:</b> menguap, mengembun, kondensasi, evaporasi, siklus. Dipakai agar penjelasan tepat.<br><i>Contoh: Uap air <span class="k">mengembun</span> menjadi titik air.</i></li>
+      <li><b>Kalimat informatif dan faktual</b>, bukan opini. Benar: Uap air mendingin di udara. Salah: Hujan itu menyebalkan!</li>
+      <li><b>Kalimat pasif</b> untuk menekankan proses. Contoh: Uap air dikumpulkan menjadi awan.</li>
+    </ul>
+  </div>
+  <div class="card"><h2>🔎 Cara menganalisis dan mengevaluasi</h2><ol><li><b>Tonton dan catat</b> informasi penting: apa, mengapa, dan urutannya.</li><li><b>Tandai struktur:</b> mana pernyataan umum, deret penjelas, dan interpretasi.</li><li><b>Periksa kata hubung:</b> apakah sebab-akibat dan urutannya tepat?</li><li><b>Periksa kalimat:</b> apakah faktual dan bukan opini?</li><li><b>Beri penilaian</b> sesuai atau kurang sesuai, lalu tulis alasannya.</li></ol></div>
+  <div class="card" id="prac"><h2>✍️ Coba tandai sendiri</h2><p>Teks <b>Terjadinya Pelangi</b>. Pilih label, lalu ketuk kalimat yang cocok. Setelah semua ditandai, tekan <b>Periksa</b>.</p>
+    <div class="lbls"><button class="tag t1 on" data-l="1">Pernyataan umum</button><button class="tag t2" data-l="2">Deret penjelas</button><button class="tag t3" data-l="3">Interpretasi</button></div>
+    <div id="ps"></div><div class="ctrl"><button class="btn" id="pchk">Periksa</button><button class="btn alt" id="prst">Ulangi</button></div><p class="fb" id="pfb" aria-live="polite"></p></div>
+  <div class="card"><h2>📖 Kamus mini</h2><ul><li><b>Fenomena:</b> peristiwa yang dapat diamati.</li><li><b>Menguap:</b> berubah dari air menjadi uap.</li><li><b>Mengembun:</b> berubah dari uap menjadi titik air.</li><li><b>Siklus:</b> peristiwa yang berulang secara berurutan.</li></ul></div>
+  <div class="card"><h2>🌟 Rangkuman</h2><ul><li>Teks eksplanasi menjelaskan proses terjadinya fenomena dengan struktur pernyataan umum, deret penjelas, dan interpretasi.</li>
+      <li>Ciri kebahasaannya: kata hubung sebab-akibat dan urutan, istilah ilmiah, serta kalimat faktual.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="animasi">
+  <div class="card">
+    <h2>🌈 Animasi fenomena alam</h2>
+    <div class="seg"><button class="on" data-k="hujan">🌧️ Terjadinya Hujan</button><button data-k="banjir">🌊 Terjadinya Banjir</button></div>
+    <svg id="scene" class="scene" viewBox="0 0 600 320" data-step="1" role="img" aria-label="Animasi proses terjadinya hujan">
+      <defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3FA9F5"/><stop offset="1" stop-color="#FFE7A8"/></linearGradient></defs><rect width="600" height="320" fill="url(#sk)"/>
+      <g class="sunr"><circle cx="70" cy="60" r="34" fill="#FFC93C"/><g stroke="#FFC93C" stroke-width="5" stroke-linecap="round"><line x1="70" y1="8" x2="70" y2="20"/><line x1="70" y1="100" x2="70" y2="112"/><line x1="18" y1="60" x2="30" y2="60"/><line x1="110" y1="60" x2="122" y2="60"/><line x1="33" y1="23" x2="41" y2="31"/><line x1="99" y1="89" x2="107" y2="97"/></g></g>
+      <polygon points="380,260 500,90 600,260" fill="#6E8F5A"/>
+      <polygon points="470,125 500,90 530,125 515,118 500,130 485,118" fill="#fff"/>
+      <rect y="250" width="600" height="70" fill="#1F7FB5"/>
+      <path d="M0 252 q25 -12 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0" fill="none" stroke="#fff" stroke-width="3" opacity=".6"/>
+      <g class="dc"><ellipse cx="410" cy="40" rx="36" ry="13" fill="#fff" opacity=".9"/><ellipse cx="435" cy="48" rx="26" ry="11" fill="#fff" opacity=".9"/></g>
+      <g transform="translate(0,35)"><g class="bird"><path d="M0 0 q8 -9 16 0 q8 -9 16 0" fill="none" stroke="#17303A" stroke-width="3" stroke-linecap="round"/></g></g>
+      <g transform="translate(0,100)"><g class="bird" style="animation-delay:-7s;animation-duration:19s"><path d="M0 0 q8 -9 16 0 q8 -9 16 0" fill="none" stroke="#17303A" stroke-width="3" stroke-linecap="round"/></g></g>
+      <ellipse cx="500" cy="270" rx="125" ry="34" fill="#58B947"/>
+      <g class="sway"><rect x="436" y="238" width="8" height="28" fill="#8B5A2B"/><circle cx="440" cy="228" r="19" fill="#2E9E4F"/></g>
+      <g class="sway" style="animation-delay:-1.5s"><rect x="566" y="244" width="7" height="24" fill="#8B5A2B"/><circle cx="569" cy="236" r="16" fill="#3DB35E"/></g>
+      <rect x="490" y="246" width="38" height="26" fill="#FFB84D"/><polygon points="485,246 509,226 533,246" fill="#E8553F"/><rect x="503" y="256" width="10" height="16" fill="#8B5A2B"/><rect x="518" y="252" width="7" height="7" fill="#9ED8F0"/>
+      <text x="455" y="284" font-size="16">🌸</text><text x="540" y="288" font-size="16">🌼</text><text x="590" y="280" font-size="14">🌷</text>
+      <text class="boat" x="40" y="264" font-size="40">⛵</text>
+      <text class="fish" x="330" y="294" font-size="24">🐟</text>
+      <g class="vapor"><path d="M90 240 q-10 -15 0 -30 t0 -30"/><path d="M150 240 q-10 -15 0 -30 t0 -30"/><path d="M210 240 q-10 -15 0 -30 t0 -30"/><path d="M270 240 q-10 -15 0 -30 t0 -30"/></g>
+      <g class="cloud"><ellipse class="c1" cx="230" cy="70" rx="70" ry="30" fill="#fff"/><ellipse class="c1" cx="185" cy="82" rx="45" ry="24" fill="#fff"/><ellipse class="c1" cx="275" cy="84" rx="48" ry="24" fill="#fff"/></g>
+      <g class="rain"><line x1="190" y1="120" x2="186" y2="136"/><line x1="220" y1="125" x2="216" y2="141"/><line x1="250" y1="120" x2="246" y2="136"/><line x1="280" y1="125" x2="276" y2="141"/><line x1="205" y1="160" x2="201" y2="176"/><line x1="235" y1="165" x2="231" y2="181"/><line x1="265" y1="160" x2="261" y2="176"/><line x1="220" y1="200" x2="216" y2="216"/><line x1="250" y1="205" x2="246" y2="221"/></g>
+      <g class="rb"><path d="M100 250 A100 100 0 0 1 300 250" stroke="#E8553F"/><path d="M112 250 A88 88 0 0 1 288 250" stroke="#FFC93C"/><path d="M124 250 A76 76 0 0 1 276 250" stroke="#3DBE6B"/><path d="M136 250 A64 64 0 0 1 264 250" stroke="#6A5BE2"/></g>
+      <g class="river"><path d="M495 130 L470 190 L420 235 L350 252"/></g>
+    </svg>
+    <svg id="scene2" class="scene" viewBox="0 0 600 320" data-step="1" role="img" aria-label="Animasi proses terjadinya banjir" style="display:none"><defs><linearGradient id="sk2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7E94A8"/><stop offset="1" stop-color="#D5E3EE"/></linearGradient></defs><rect width="600" height="320" fill="url(#sk2)"/>
+      <g fill="#6B7A85"><ellipse cx="170" cy="55" rx="85" ry="32"/><ellipse cx="110" cy="70" rx="55" ry="26"/><ellipse cx="235" cy="72" rx="58" ry="26"/><ellipse cx="410" cy="45" rx="70" ry="26"/><ellipse cx="370" cy="58" rx="45" ry="20"/></g>
+      <g class="brain"><line x1="80" y1="105" x2="76" y2="123"/><line x1="130" y1="110" x2="126" y2="128"/><line x1="180" y1="105" x2="176" y2="123"/><line x1="230" y1="110" x2="226" y2="128"/><line x1="105" y1="145" x2="101" y2="163"/><line x1="205" y1="145" x2="201" y2="163"/><line x1="380" y1="90" x2="376" y2="108"/><line x1="430" y1="92" x2="426" y2="110"/><line x1="405" y1="130" x2="401" y2="148"/></g>
+      <path d="M0 240 Q140 190 300 262 L300 320 L0 320Z" fill="#8FB24F"/><rect x="300" y="268" width="300" height="52" fill="#8FB24F"/><rect x="280" y="264" width="52" height="56" fill="#4F9FD3"/>
+      <g class="stump" fill="#8B5A2B"><rect x="52" y="213" width="10" height="14"/><rect x="110" y="207" width="10" height="14"/><rect x="170" y="212" width="10" height="14"/><text x="226" y="242" font-size="18">🗑️</text><text x="250" y="256" font-size="15">🥤</text></g>
+      <g class="run"><path d="M110 215 Q200 235 285 268"/><path d="M170 222 Q230 240 285 275"/></g>
+      <rect x="360" y="238" width="40" height="30" fill="#FFB84D"/><polygon points="355,238 380,218 405,238" fill="#E8553F"/><rect x="374" y="250" width="12" height="18" fill="#8B5A2B"/>
+      <rect x="430" y="238" width="40" height="30" fill="#F6A5C0"/><polygon points="425,238 450,218 475,238" fill="#8E44C7"/><rect x="444" y="250" width="12" height="18" fill="#8B5A2B"/>
+      <rect x="500" y="238" width="40" height="30" fill="#9FDDE6"/><polygon points="495,238 520,218 545,238" fill="#1E88C9"/><rect x="514" y="250" width="12" height="18" fill="#8B5A2B"/>
+      <rect class="flood" x="0" y="222" width="600" height="98"/></svg>
+    <div class="dots" id="dots"><i></i><i></i><i></i><i></i></div>
+    <div class="guide"><svg id="kid" class="kid" viewBox="0 0 110 140" role="img" aria-label="Rani, karakter anak yang menjelaskan"><path d="M22 140 q0-48 33-48 q33 0 33 48z" fill="#E8553F"/><line x1="30" y1="108" x2="22" y2="134" stroke="#F6C28B" stroke-width="9" stroke-linecap="round"/><g id="arm"><line x1="82" y1="108" x2="82" y2="136" stroke="#F6C28B" stroke-width="9" stroke-linecap="round"/></g><circle cx="24" cy="66" r="9" fill="#2B1B17"/><circle cx="86" cy="66" r="9" fill="#2B1B17"/><circle cx="55" cy="60" r="30" fill="#F6C28B"/><path d="M25 58 q2-36 30-36 q28 0 30 36 q-12-20-30-20 q-18 0-30 20z" fill="#2B1B17"/><circle class="eye" cx="45" cy="62" r="3.5" fill="#17303A"/><circle class="eye" cx="65" cy="62" r="3.5" fill="#17303A"/><circle cx="37" cy="72" r="5" fill="#FF8FA3" opacity=".6"/><circle cx="73" cy="72" r="5" fill="#FF8FA3" opacity=".6"/><ellipse id="mouth" cx="55" cy="74" rx="6" ry="2.5" fill="#B3342A"/><text id="prop" x="76" y="26" font-size="26">☀️</text></svg><div class="cap card bub" id="cap" aria-live="polite"></div></div>
+    <div class="guide"><div class="card bub bubr" id="bq" role="button" tabindex="0"></div><div class="ch" id="budiA"></div></div>
+    <div class="ctrl">
+      <button class="btn alt" id="prev">Sebelumnya</button>
+      <button class="btn" id="play">Jeda</button>
+      <button class="btn alt" id="next">Berikutnya</button>
+      <button class="btn" id="say">Bacakan</button>
+    </div>
+  </div>
+  <div class="card"><h3>💬 Diskusikan</h3><p>Kata hubung apa yang menunjukkan urutan di setiap tahap? Bagian struktur mana yang dijelaskan oleh animasi ini?</p></div>
+</section>
+
+<section id="game">
+  <div class="ctrl" style="margin:0 0 .8rem"><button class="btn alt" id="snd">🔊 Suara: hidup</button></div>
+  <div id="setup" class="card">
+    <h2>🏆 Tantangan Eksplanasi Mandiri</h2>
+    <p>Tulis namamu dan pilih permainan. Kerjakan soal satu per satu sendiri. Jawaban benar mendapat 10 poin, dan jawaban benar beruntun mendapat bonus 5 poin.</p>
+    
+    <p><b>Pilih permainan:</b></p>
+    <div class="modes"><button class="mode on" data-m="mix">🎲 Campuran<small>Semua jenis soal</small></button><button class="mode" data-m="video">🎯 Analisis Video<small>Info penting tayangan</small></button><button class="mode" data-m="eval">⚖️ Evaluasi Teks<small>Struktur dan ciri bahasa</small></button><button class="mode" data-m="order">🧩 Susun Proses<small>Urutkan tahap proses</small></button><button class="mode" data-m="word">🔍 Detektif Kata<small>Ciri kebahasaan</small></button><button class="mode" data-m="talk">🗣️ Tulis Jawabanmu<small>Jelaskan dengan alasan</small></button></div>
+    <div id="names" class="teams"></div>
+    <div class="ctrl"><button class="btn" id="start">Mulai permainan</button></div>
+  </div>
+  <div id="play2" style="display:none">
+    <div class="teams" id="board"></div>
+    <div class="stage"><div class="ch" id="gr"></div><div class="card sb" id="sb" aria-live="polite"></div><div class="ch" id="gb"></div></div>
+    <div class="card" id="qc" style="margin-top:1rem">
+      <div class="tbar"><i id="tb"></i></div>
+      <p class="mut" id="meta"></p>
+      <h3 id="q"></h3>
+      <div id="opts"></div>
+      <p class="fb" id="fb" aria-live="polite"></p>
+      <button class="btn" id="nx" style="display:none">Lanjut</button>
+    </div>
+  </div>
+  <div id="end" class="card" style="display:none">
+    <div class="stage" style="justify-content:center"><div class="ch cheer" id="e1"></div><div class="ch cheer" id="e2"></div></div>
+    <h2 id="win"></h2>
+    <div class="teams" id="final"></div>
+    <div class="ctrl"><button class="btn" id="again">Main lagi</button></div>
+  </div>
+</section>
+</main>
+
+<script>
+// Materi interaktif
+document.querySelectorAll('.flip').forEach(b=>b.onclick=()=>b.classList.toggle('on'));
+const PR=[['Pelangi adalah lengkungan berwarna-warni yang tampak di langit setelah hujan.',1],['Mula-mula, titik-titik air masih tersisa di udara setelah hujan reda.',2],['Kemudian, cahaya matahari masuk ke titik air sehingga terurai menjadi warna merah sampai ungu.',2],['Jadi, pelangi muncul ketika hujan dan matahari hadir bersamaan.',3]],LB=['','Pernyataan umum','Deret penjelas','Interpretasi'],got=[0,0,0,0],ps=document.getElementById('ps'),pfb=document.getElementById('pfb');
+let cur=1;
+document.querySelectorAll('.lbls button').forEach(b=>b.onclick=()=>{cur=+b.dataset.l;document.querySelectorAll('.lbls button').forEach(x=>x.classList.toggle('on',x===b))});
+function drawP(){ps.innerHTML='';pfb.textContent='';PR.forEach((p,i)=>{const b=document.createElement('button');b.className='opt';b.innerHTML=(got[i]?'<span class="tag t'+got[i]+'">'+LB[got[i]]+'</span> ':'')+p[0];b.onclick=()=>{got[i]=cur;drawP()};ps.append(b)})}
+document.getElementById('pchk').onclick=()=>{if(got.includes(0)){pfb.textContent='Tandai semua kalimat dulu ya!';return}let ok=0;[...ps.children].forEach((b,i)=>{const r=got[i]===PR[i][1];ok+=r;b.classList.add(r?'ok':'no')});pfb.textContent=ok===4?'🎉 Hebat, semua tepat!':'Benar '+ok+' dari 4. Kalimat merah perlu diperiksa lagi. Petunjuk: lihat fungsi tiap kalimat dan kata hubungnya.'};
+document.getElementById('prst').onclick=()=>{got.fill(0);drawP()};
+drawP();
+const FX={tujuan:['🚀','⭐','🎯','🌟','✨','🏅','🎒','📣'],materi:['📚','✏️','💡','📝','🔬','📐','🖍️','🧠'],animasi:['☁️','🌧️','🌈','☀️','💧','🌊','🦆','🐟'],game:['🎮','🏆','🎉','🎈','⭐','🎲','🧩','🎁']};
+function bgfx(t){const c=document.getElementById('bgfx'),e=FX[t];c.innerHTML='';for(let i=0;i<18;i++){const s=document.createElement('span');s.textContent=e[i%e.length];s.style.cssText='left:'+(Math.random()*94)+'%;top:'+(Math.random()*90)+'%;font-size:'+(1.6+Math.random()*2)+'rem;animation-delay:-'+(Math.random()*6)+'s;animation-duration:'+(4+Math.random()*4)+'s';c.append(s)}}
+bgfx('tujuan');
+const PALS=[['pelangi','🌈','Pelangi'],['permen','🍬','Permen'],['alam','🌿','Alam'],['senja','🌅','Senja'],['samudra','🌊','Samudra']],palm=document.getElementById('palm'),palb=document.getElementById('palb');
+function setPal(p){document.body.dataset.pal=p;try{localStorage.setItem('pal',p)}catch(e){}palm.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.p===p))}
+PALS.forEach(p=>{const b=document.createElement('button');b.dataset.p=p[0];b.textContent=p[1]+' '+p[2];b.onclick=()=>setPal(p[0]);palm.append(b)});
+palb.onclick=()=>{palm.hidden=!palm.hidden;palb.setAttribute('aria-expanded',String(!palm.hidden))};
+let sp='pelangi';try{sp=localStorage.getItem('pal')||sp}catch(e){}
+setPal(sp);
+const ORDER=['tujuan','materi','animasi','game'],NM={tujuan:'Tujuan',materi:'Materi',animasi:'Animasi',game:'Permainan'};
+function updFP(id){const i=ORDER.indexOf(id),p=document.getElementById('fprev'),n=document.getElementById('fnext');p.style.visibility=i>0?'visible':'hidden';p.setAttribute('aria-label','Kembali ke menu '+(NM[ORDER[i-1]]||''));n.textContent=i<3?'Menu ▶':'🏠 Awal';n.setAttribute('aria-label',i<3?'Lanjut ke menu '+NM[ORDER[i+1]]:'Kembali ke awal')}
+document.getElementById('fprev').onclick=()=>{const i=ORDER.indexOf(document.body.dataset.tab||'tujuan');if(i>0)go(ORDER[i-1])};
+document.getElementById('fnext').onclick=()=>{const i=ORDER.indexOf(document.body.dataset.tab||'tujuan');go(i<3?ORDER[i+1]:'tujuan')};
+updFP('tujuan');
+document.querySelectorAll('section').forEach(s=>{const i=ORDER.indexOf(s.id),d=document.createElement('div');d.className='pager';
+ d.innerHTML=(i>0?'<button class="btn alt" data-g="'+ORDER[i-1]+'">⬅️ Kembali: '+NM[ORDER[i-1]]+'</button>':'<span></span>')+(i<3?'<button class="btn" data-g="'+ORDER[i+1]+'">Lanjut: '+NM[ORDER[i+1]]+' ➡️</button>':'<button class="btn" data-g="tujuan">🏠 Kembali ke awal</button>');
+ s.append(d);d.querySelectorAll('button').forEach(b=>b.onclick=()=>go(b.dataset.g))});
+// Navigasi
+const tabs=document.querySelectorAll('nav button');
+function go(id){document.body.dataset.tab=id;bgfx(id);updFP(id);tabs.forEach(b=>b.setAttribute('aria-selected',b.dataset.t===id));document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===id));scrollTo(0,0)}
+tabs.forEach(b=>b.onclick=()=>go(b.dataset.t));
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+
+// Animasi
+let steps=[
+ 'Tahap 1, penguapan. Panas matahari memanaskan air laut dan sungai, sehingga air menguap menjadi uap air yang naik ke langit.',
+ 'Tahap 2, pengembunan. Di ketinggian udara lebih dingin. Uap air mendingin lalu berubah menjadi titik-titik air yang berkumpul membentuk awan.',
+ 'Tahap 3, hujan. Karena awan semakin tebal dan berat, titik-titik air jatuh ke bumi sebagai hujan.',
+ 'Tahap 4, aliran air. Air hujan mengalir lewat sungai menuju laut. Setelah itu, proses kembali berulang dari penguapan.'];
+function char(w){const r=w==='rani',sh=r?'#E8553F':'#1E88C9',hr='#2B1B17',sk=r?'#F6C28B':'#E3A672',ln=(x,c)=>'<g class="'+c+'"><line x1="'+x+'" y1="108" x2="'+x+'" y2="136" stroke="'+sk+'" stroke-width="9" stroke-linecap="round"/></g>';
+ return '<svg viewBox="0 0 110 140" role="img" aria-label="'+(r?'Rani':'Budi')+'"><path d="M22 140 q0-48 33-48 q33 0 33 48z" fill="'+sh+'"/>'+ln(28,'arml')+ln(82,'arm')+(r?'<circle cx="24" cy="66" r="9" fill="'+hr+'"/><circle cx="86" cy="66" r="9" fill="'+hr+'"/>':'')+'<circle cx="55" cy="60" r="30" fill="'+sk+'"/>'+(r?'<path d="M25 58 q2-36 30-36 q28 0 30 36 q-12-20-30-20 q-18 0-30 20z" fill="'+hr+'"/>':'<path d="M24 50 q2-30 31-30 q29 0 31 30 q-10-6-31-6 q-21 0-31 6z" fill="#FFC93C"/><rect x="54" y="42" width="42" height="7" rx="3.5" fill="#E8A400"/>')+'<circle class="eye" cx="45" cy="62" r="3.5" fill="#17303A"/><circle class="eye" cx="65" cy="62" r="3.5" fill="#17303A"/><circle cx="37" cy="72" r="5" fill="#FF8FA3" opacity=".6"/><circle cx="73" cy="72" r="5" fill="#FF8FA3" opacity=".6"/><path class="mo" d="M47 72 q8 8 16 0z"/><text class="fx" x="88" y="26" text-anchor="middle"></text></svg>'}
+document.getElementById('budiA').innerHTML=char('budi');
+let BQ=[['Panas matahari membuat air laut menguap. Kata hubung apa yang menunjukkan akibat?','Kata "sehingga" menunjukkan akibat: air menguap menjadi uap air.'],['Rani sedang menjelaskan proses tahap demi tahap. Itu bagian struktur yang mana?','Deret penjelas, karena menjelaskan proses secara berurutan.'],['Kata apa yang menunjukkan sebab awan menjadi hujan?','Kata "karena" menunjukkan sebab: awan semakin berat.'],['Setelah air mengalir ke laut, apa yang terjadi lagi?','Prosesnya berulang dari penguapan. Itulah siklus air.']];
+const bqe=document.getElementById('bq');
+function bq(s){bqe.dataset.s=s;bqe.textContent='Budi bertanya: '+BQ[s][0]+' (ketuk untuk melihat jawaban)'}
+bqe.onclick=()=>{bqe.textContent='Jawaban Rani: '+BQ[+bqe.dataset.s][1]};
+bqe.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();bqe.click()}};
+let st=0,timer=null,playing=true;
+let ang=[-130,-160,-70,-95],props=['☀️','☁️','🌧️','🏞️'];
+function kid(s){const k=document.getElementById('kid');document.getElementById('arm').style.transform='rotate('+ang[s]+'deg)';document.getElementById('prop').textContent=props[s];k.classList.add('talk');clearTimeout(kid.t);kid.t=setTimeout(()=>k.classList.remove('talk'),3500)}
+const sc=document.getElementById('scene'),cap=document.getElementById('cap'),dots=[...document.querySelectorAll('#dots i')];
+function show(i){st=(i+4)%4;document.querySelectorAll('svg.scene').forEach(s=>s.dataset.step=st+1);cap.textContent=steps[st];kid(st);bq(st);dots.forEach((d,k)=>d.classList.toggle('on',k<=st))}
+function auto(){clearInterval(timer);if(playing)timer=setInterval(()=>show(st+1),9000);document.getElementById('play').textContent=playing?'Jeda':'Putar'}
+document.getElementById('prev').onclick=()=>{show(st-1);auto()};
+document.getElementById('next').onclick=()=>{show(st+1);auto()};
+document.getElementById('play').onclick=()=>{playing=!playing;auto()};
+document.getElementById('say').onclick=()=>{try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(steps[st]);u.lang='id-ID';u.onstart=()=>document.getElementById('kid').classList.add('talk');u.onend=()=>document.getElementById('kid').classList.remove('talk');speechSynthesis.speak(u)}catch(e){}};
+const H={steps,BQ,ang,props},B={steps:['Tahap 1, hujan deras. Hujan deras turun terus-menerus sehingga banyak air jatuh ke permukaan bumi.','Tahap 2, air tidak terserap. Karena hutan gundul dan tanah tertutup sampah, air hujan tidak dapat terserap tanah dan mengalir deras ke sungai.','Tahap 3, sungai meluap. Sungai yang dangkal dan tersumbat sampah tidak mampu menampung air, sehingga air meluap ke daratan.','Tahap 4, banjir. Air menggenang di permukiman, akibatnya rumah dan jalan terendam. Karena itu, kita perlu menjaga lingkungan.'],BQ:[['Hujan deras turun terus-menerus. Kata hubung apa yang menunjukkan akibat?','Kata sehingga menunjukkan akibat: banyak air jatuh ke bumi.'],['Apa penyebab air hujan tidak terserap tanah pada tahap ini?','Hutan gundul dan tanah tertutup sampah, ditandai dengan kata karena.'],['Apa yang terjadi karena sungai tidak mampu menampung air?','Air meluap ke daratan, akibat sungai yang dangkal dan tersumbat sampah.'],['Bagian akhir berisi pesan menjaga lingkungan. Itu bagian struktur yang mana?','Interpretasi, karena berisi kesimpulan dan pesan penutup.']],ang:[-130,-100,-70,-95],props:['🌧️','🌳','🌊','🏘️']};
+function topic(t){const d=t==='banjir'?B:H;steps=d.steps;BQ=d.BQ;ang=d.ang;props=d.props;document.getElementById('scene').style.display=t==='banjir'?'none':'block';document.getElementById('scene2').style.display=t==='banjir'?'block':'none';document.querySelectorAll('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.k===t));show(0);auto()}
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>topic(b.dataset.k));
+show(0);auto();
+
+// Permainan
+const Q=[
+ ['Pada animasi, apa penyebab air laut menguap?',['Angin kencang','Panas matahari','Gelombang laut','Cahaya bulan'],1,'Analisis video','Penjelasan: animasi menunjukkan panas matahari memanaskan air sehingga menguap.'],
+ ['Kalimat "Hujan itu menyebalkan sekali!" muncul dalam teks eksplanasi. Penilaian yang tepat?',['Sesuai, karena kalimatnya menarik','Tidak sesuai, karena berisi pendapat pribadi, bukan informasi','Sesuai, karena memakai tanda seru','Tidak sesuai, karena terlalu panjang'],1,'Evaluasi teks','Penjelasan: teks eksplanasi memuat fakta dan proses, bukan opini.'],
+ ['Menurut tayangan, apa yang terjadi pada uap air di tempat tinggi yang dingin?',['Berubah menjadi titik air dan membentuk awan','Langsung jatuh sebagai hujan','Kembali ke laut','Menjadi es di gunung'],0,'Analisis video','Penjelasan: uap air mengembun menjadi titik air, lalu berkumpul menjadi awan.'],
+ ['Sebuah teks hanya berisi pernyataan umum dan interpretasi. Evaluasi yang tepat?',['Sudah sesuai, deret penjelas tidak perlu ada','Kurang sesuai, karena tidak ada deret penjelas yang menjelaskan proses','Sudah sesuai, karena ada dua bagian','Kurang sesuai, karena tidak ada dialog'],1,'Evaluasi teks','Penjelasan: deret penjelas adalah inti teks eksplanasi karena menguraikan proses.'],
+ ['Informasi penting apa yang ditampilkan animasi pada tahap ketiga?',['Awan berat sehingga titik air jatuh sebagai hujan','Matahari memanaskan laut','Air mengalir ke sungai','Pelangi muncul di langit'],0,'Analisis video','Penjelasan: tahap 3 menunjukkan awan semakin berat lalu hujan turun.'],
+ ['Kalimat "Air menguap karena panas, lalu naik ke langit." Ciri kebahasaan apa yang sesuai?',['Ada kata hubung sebab (karena) dan urutan (lalu)','Ada kata seru','Ada dialog tokoh','Ada kata sapaan'],0,'Evaluasi teks','Penjelasan: karena menunjukkan sebab, lalu menunjukkan urutan proses.'],
+ ['Susun urutan benar: (1) hujan (2) penguapan (3) pengembunan',['1-2-3','2-3-1','3-1-2','2-1-3'],1,'Urutan proses'],
+ ['Pernyataan mana yang BENAR sesuai tayangan?',['Awan terbentuk sebelum air menguap','Pengembunan terjadi setelah penguapan','Hujan terjadi sebelum awan terbentuk','Penguapan terjadi karena adanya awan'],1,'Analisis video','Penjelasan: urutannya penguapan, pengembunan, hujan, lalu aliran air.'],
+ ['Teks menulis "Uap air mengembun menjadi awan." Bagaimana penilaian kata "mengembun"?',['Sesuai, istilah ilmiah yang menjelaskan proses','Tidak sesuai, karena bahasa daerah','Tidak sesuai, istilah ilmiah dilarang','Sesuai, karena kata sifat'],0,'Evaluasi teks','Penjelasan: teks eksplanasi memakai istilah ilmiah seperti menguap dan mengembun.'],
+ ['Paragraf akhir: "Jadi, hujan terjadi berulang sehingga air tersedia terus." Bagian struktur dan penilaiannya?',['Interpretasi, sesuai karena menyimpulkan proses','Pernyataan umum, karena membuka teks','Deret penjelas, karena memuat langkah','Judul, karena singkat'],0,'Evaluasi teks','Penjelasan: kalimat "jadi" menyimpulkan, itu ciri bagian interpretasi.'],
+ ['Teks: "Bumi berputar. Kemudian siang terjadi. Pertama malam terjadi." Evaluasi urutannya?',['Sesuai, karena sudah runtut','Kurang sesuai, kata pertama muncul setelah kemudian sehingga tidak runtut','Sesuai, karena memakai tanda titik','Kurang sesuai, karena tidak ada kata bumi'],1,'Evaluasi teks','Penjelasan: kata urutan harus sejalan dengan tahap prosesnya.'],
+ ['Perubahan uap air menjadi titik air disebut ...',['penguapan','pengembunan','pembekuan','pelapukan'],1,'Istilah ilmiah'],
+ ['Menurut tayangan, mengapa awan menjadi berat?',['Karena angin bertiup kencang','Karena laut sangat dalam','Karena banyak titik air berkumpul','Karena matahari terbenam'],2,'Analisis video','Penjelasan: titik-titik air yang terus berkumpul membuat awan semakin berat.'],
+ ['Apa peran matahari dalam tayangan proses hujan?',['Mendinginkan uap air','Memberi panas sehingga air menguap','Menjatuhkan air hujan','Membuat aliran sungai'],1,'Analisis video','Penjelasan: panas matahari menjadi awal terjadinya penguapan.'],
+ ['Bagian akhir tayangan menunjukkan proses hujan berulang. Apa buktinya?',['Awan menghilang selamanya','Matahari terbenam','Air kembali ke laut lalu menguap lagi','Gunung mulai bersalju'],2,'Analisis video','Penjelasan: air mengalir ke laut, lalu menguap lagi sehingga membentuk siklus.'],
+ ['Informasi mana yang TIDAK ada dalam tayangan?',['Terjadinya gempa bumi','Penguapan air laut','Pembentukan awan','Air hujan mengalir ke sungai'],0,'Analisis video','Penjelasan: tayangan hanya membahas siklus air, bukan gempa bumi.'],
+ ['Kalimat "Hujan adalah turunnya air dari awan ke bumi." Bagian struktur dan penilaiannya?',['Interpretasi, karena menyimpulkan','Deret penjelas, karena memuat tahap','Pernyataan umum, sesuai karena memperkenalkan fenomena','Judul, karena singkat'],2,'Evaluasi teks','Penjelasan: kalimat pembuka yang mengenalkan fenomena adalah pernyataan umum.'],
+ ['Teks: "Awan berat, tetapi hujan turun." Bagaimana penilaian kata "tetapi"?',['Sesuai, karena menunjukkan sebab','Sesuai, karena menunjukkan urutan','Kurang sesuai, karena tetapi menunjukkan pertentangan, bukan sebab-akibat','Kurang sesuai, karena huruf kecil'],2,'Evaluasi teks','Penjelasan: hubungan awan berat dan hujan adalah sebab-akibat, cocok memakai sehingga.'],
+ ['Kalimat "Uap air dikumpulkan menjadi awan." berbentuk pasif. Penilaiannya?',['Tidak sesuai, teks harus selalu aktif','Sesuai, teks eksplanasi sering memakai kalimat pasif untuk menekankan proses','Tidak sesuai, pasif hanya untuk puisi','Sesuai, karena memakai kata seru'],1,'Evaluasi teks','Penjelasan: kalimat pasif membuat fokus pada proses, bukan pelakunya.'],
+ ['Tiga paragraf berisi cerita liburan di pantai. Apakah itu teks eksplanasi?',['Sesuai, karena ada kata pantai','Tidak sesuai, karena tidak menjelaskan proses terjadinya fenomena','Sesuai, karena ada tiga paragraf','Tidak sesuai, karena tidak ada gambar'],1,'Evaluasi teks','Penjelasan: teks eksplanasi harus menjelaskan sebab dan proses suatu fenomena.'],
+ ['Menurut animasi banjir, apa penyebab air hujan tidak terserap tanah?',['Tanah terlalu basah oleh laut','Hutan gundul dan tanah tertutup sampah','Sungai terlalu dalam','Awan terlalu tinggi'],1,'Analisis video','Penjelasan: tayangan menunjukkan hutan gundul dan sampah sehingga air tidak terserap.'],
+ ['Pada animasi banjir, apa yang terjadi setelah sungai tidak mampu menampung air?',['Air surut dengan cepat','Air meluap ke permukiman','Hujan berhenti','Sungai mengering'],1,'Analisis video','Penjelasan: sungai yang penuh meluap dan menggenangi daratan.'],
+ ['Urutan yang benar pada animasi banjir adalah ...',['Sungai meluap, hujan deras, air tidak terserap, banjir','Hujan deras, air tidak terserap, sungai meluap, banjir','Banjir, hujan deras, sungai meluap, air tidak terserap','Air tidak terserap, banjir, hujan deras, sungai meluap'],1,'Analisis video','Penjelasan: hujan deras, air tidak terserap, sungai meluap, lalu terjadi banjir.'],
+ ['Teks banjir ditulis: "Banjir itu menakutkan dan aku benci banjir." Bagaimana penilaiannya?',['Sesuai, karena memakai perasaan','Kurang sesuai, karena berisi opini, bukan penjelasan proses','Sesuai, karena singkat','Kurang sesuai, karena tidak ada gambar'],1,'Evaluasi teks','Penjelasan: teks eksplanasi harus faktual dan menjelaskan proses.'],
+ ['Kalimat "Hutan gundul, akibatnya air hujan tidak terserap." Apakah kata akibatnya tepat?',['Tepat, karena menunjukkan akibat dari hutan gundul','Tidak tepat, karena menunjukkan pertentangan','Tidak tepat, karena hanya menunjukkan urutan waktu','Tepat, karena menunjukkan pilihan'],0,'Evaluasi teks','Penjelasan: akibatnya menghubungkan sebab (hutan gundul) dengan akibatnya.']];
+let N=1,teams=[],turn=0,qi=0,order=[];
+const $=id=>document.getElementById(id);
+let snd=true,AC=null;
+function tone(f,t,d,type,v){const a=AC.currentTime+t,o=AC.createOscillator(),g=AC.createGain();o.type=type||'triangle';o.frequency.value=f;g.gain.setValueAtTime(0,a);g.gain.linearRampToValueAtTime(v||.18,a+.02);g.gain.exponentialRampToValueAtTime(.001,a+d);o.connect(g);g.connect(AC.destination);o.start(a);o.stop(a+d+.05)}
+function sfx(k){if(!snd)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();
+ if(k==='ok')[523,659,784,1047].forEach((f,i)=>tone(f,i*.1,.25));
+ else if(k==='no'){tone(260,0,.25,'sine');tone(196,.18,.35,'sine')}
+ else if(k==='win')[523,659,784,659,784,1047,1319].forEach((f,i)=>tone(f,i*.12,.3))}catch(e){}}
+$('snd').onclick=()=>{snd=!snd;$('snd').textContent=snd?'🔊 Suara: hidup':'🔇 Suara: mati';sfx('ok')};
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const OK=['Hebat! Jawabanmu tepat!','Keren sekali! Tos dulu!','Yeay, betul sekali!','Mantap! Kamu pintar!'],NO=['Tidak apa-apa, kita belajar bersama!','Hampir! Ayo semangat di soal berikutnya!','Ups! Baca jawaban hijau ya, lalu kita coba lagi!'],TH=['Baca soal dengan teliti, ya!','Baca soalnya pelan-pelan ya.','Ingat struktur dan kata hubungnya!','Kamu pasti bisa!'];
+function react(s,m,w){const f={cheer:['⭐','🎉'],oops:['','💧'],think:['💭','🤔']}[s],a=$('gr'),b=$('gb');a.className='ch'+(s==='cheer'?' cheer':'');b.className='ch'+(s==='cheer'?' cheer':s==='oops'?' oops':'');a.querySelector('.fx').textContent=f[0];b.querySelector('.fx').textContent=f[1];$('sb').textContent=w+': '+m}
+$('gr').innerHTML=char('rani');$('gb').innerHTML=char('budi');$('e1').innerHTML=char('rani');$('e2').innerHTML=char('budi');
+document.querySelectorAll('#end .fx').forEach(f=>f.textContent='🎉');
+react('think','Halo! Aku Rani. Tulis namamu, pilih permainan, lalu mulai ya!','Rani');
+function names(){$('names').innerHTML='';for(let i=0;i<N;i++){const d=document.createElement('div');d.innerHTML='<label><b>Namamu</b><input type="text" placeholder="Tulis namamu" value="Siswa" maxlength="16"></label>';$('names').append(d)}}
+names();
+function board(){$('board').innerHTML=teams.map((t,i)=>'<div class="team'+(i===turn?' turn':'')+'">'+t.n+(t.k>=2?' 🔥':'')+'<b>'+t.s+'</b>'+(i===turn?'Skormu':'')+'</div>').join('')}
+$('start').onclick=()=>{teams=[...document.querySelectorAll('#names input')].map(e=>({n:e.value.trim()||'Siswa',s:0}));turn=0;qi=0;order=build();$('setup').style.display='none';$('end').style.display='none';$('play2').style.display='block';ask()};
+let M='mix',TM=null,GOLD=false,CC=0;
+document.querySelectorAll('.mode').forEach(b=>b.onclick=()=>{M=b.dataset.m;document.querySelectorAll('.mode').forEach(x=>x.classList.toggle('on',x===b))});
+const ORD=[['Urutkan proses terjadinya hujan',['Air laut menguap karena panas matahari','Uap air naik lalu mendingin menjadi awan','Awan semakin berat sehingga hujan turun','Air hujan mengalir ke sungai dan laut']],['Urutkan proses terjadinya pelangi',['Hujan turun dan masih ada titik air di udara','Matahari bersinar dari arah belakang kita','Cahaya matahari terurai di titik-titik air','Muncul garis warna pelangi di langit']],['Urutkan proses terjadinya banjir',['Hutan gundul dan sampah menumpuk di sungai','Hujan deras turun terus-menerus','Air tidak terserap tanah dan sungai meluap','Air menggenang di permukiman warga']],['Urutkan proses terjadinya siang dan malam',['Bumi berputar pada porosnya','Bagian bumi yang menghadap matahari terkena cahaya','Daerah itu mengalami siang','Bagian yang membelakangi matahari mengalami malam']],['Urutkan langkah menulis teks eksplanasi',['Tentukan fenomena yang akan dijelaskan','Tulis pernyataan umum','Jelaskan prosesnya dalam deret penjelas','Tutup dengan interpretasi']],['Urutkan proses tumbuhnya tanaman dari biji',['Biji ditanam di tanah yang lembap','Biji menyerap air lalu berkecambah','Akar dan tunas mulai tumbuh','Tanaman tumbuh besar dan berbuah']]];
+const WD=[['Awan semakin berat sehingga hujan turun.',['sehingga']],['Air laut menguap karena panas matahari.',['karena']],['Uap air naik, kemudian berubah menjadi awan.',['kemudian']],['Tanaman layu sebab tidak mendapat air.',['sebab']],['Hutan gundul, akibatnya banjir mudah terjadi.',['akibatnya']],['Pertama, air hujan meresap ke dalam tanah.',['pertama']],['Hujan deras turun sehingga sungai meluap.',['sehingga']],['Mula-mula uap mendingin, lalu menjadi titik air.',['lalu']]];
+function build(){const sh=a=>[...a].sort(()=>Math.random()-.5),mc=sh([...Q.keys()]),vd=mc.filter(i=>Q[i][3]!=='Evaluasi teks'),ev=mc.filter(i=>Q[i][3]==='Evaluasi teks'),od=sh(ORD).map(d=>({t:'o',d})),wd=sh(WD).map(d=>({t:'w',d})),dd=sh(DD).map(d=>({t:'d',d}));
+ const f=r=>r.slice(0,Math.max(1,Math.floor(r.length/N))*N);
+ return f(M==='video'?vd:M==='eval'?ev:M==='order'?od:M==='talk'?dd:M==='word'?wd:sh([...vd.slice(0,3),...ev.slice(0,3),...od.slice(0,2),...wd.slice(0,2),...dd.slice(0,1)]))}
+const DD=[['Jelaskan dengan kata-katamu: informasi penting apa saja yang kamu lihat dalam tayangan terjadinya hujan?','Penguapan air laut karena panas matahari, uap mendingin menjadi awan, awan berat lalu hujan turun, air mengalir ke sungai dan laut, lalu proses berulang.'],['Teks: "Hujan itu menyebalkan. Aku benci hujan." Apakah sesuai sebagai teks eksplanasi? Jelaskan alasanmu!','Tidak sesuai, karena berisi pendapat pribadi. Teks eksplanasi harus menjelaskan proses secara faktual dan runtut.'],['Teks hanya berisi: "Hujan turun dari awan." Apa yang kurang dari struktur dan ciri kebahasaannya?','Kurang deret penjelas yang menguraikan tahap proses, dan belum ada kata hubung sebab-akibat atau urutan.'],['Mengapa kata hubung seperti karena dan kemudian penting dalam teks eksplanasi? Berikan contoh kalimat.','Karena menunjukkan sebab-akibat dan urutan agar penjelasan runtut. Contoh: Awan berat sehingga hujan turun.'],['Menurutmu, bagian mana dari tayangan yang paling penting untuk dipahami? Berikan alasannya.','Jawaban bervariasi, misalnya penguapan karena menjadi awal proses. Nilai kejelasan alasan dan kesesuaiannya dengan tayangan.']];
+function askD(d){meta('Esai singkat');$('q').textContent=d[0];$('fb').textContent='Tulis jawabanmu dengan kata-katamu sendiri dan sertakan alasan. Lalu bandingkan dengan contoh jawaban.';
+ const r=document.createElement('button'),y=document.createElement('button'),n=document.createElement('button');r.className=y.className=n.className='opt';r.textContent='👀 Lihat contoh jawaban';y.textContent='✅ Jawabanku sudah tepat';n.textContent='🔁 Perlu diperbaiki';y.style.display=n.style.display='none';
+ r.onclick=()=>{if(!ta.value.trim()){$('fb').textContent='Tulis jawabanmu dulu ya!';return}ta.disabled=true;r.disabled=true;$('fb').textContent='Contoh jawaban: '+d[1];y.style.display=n.style.display='block'};
+ y.onclick=()=>endQ(true,'Contoh jawaban: '+d[1],20);n.onclick=()=>endQ(false,'Bandingkan dengan contoh jawaban: '+d[1]);const ta=document.createElement('textarea');ta.className='ta';ta.placeholder='Tulis jawabanmu di sini...';$('opts').append(ta,r,y,n)}
+function stopT(){clearInterval(TM)}
+function startT(T){stopT();T=T||40000;const s=Date.now(),b=$('tb');TM=setInterval(()=>{const r=1-(Date.now()-s)/T;b.style.transform='scaleX('+Math.max(r,0)+')';if(r<=0)late()},100)}
+function late(){stopT();if(typeof order[qi]==='number')return pick(-1,CC);endQ(false,'⏰ Waktu habis! ')}
+function meta(c){$('meta').textContent='Soal '+(qi+1)+' dari '+order.length+' - '+c+(GOLD?' - ⭐ SOAL EMAS: poin 2x!':'')}
+function pts(b){const t=teams[turn],p=b*(GOLD?2:1),x=(t.k=(t.k||0)+1)>=2?5:0;t.s+=p+x;return p+x}
+function endQ(ok,msg,b){stopT();document.querySelectorAll('#opts button').forEach(x=>x.disabled=true);let p=0;if(ok){sfx('ok');react('cheer',rnd(OK),Math.random()<.5?'Rani':'Budi');p=pts(b)}else{sfx('no');teams[turn].k=0;react('oops',rnd(NO),'Budi')}
+ $('fb').textContent=(ok?'🎉 Benar! '+teams[turn].n+' mendapat '+p+' poin. ':'💪 Belum tepat. ')+msg;board();$('nx').style.display='inline-block';$('nx').textContent=qi+1===order.length?'Lihat hasil':'Lanjut'}
+function askO(d){meta('Susun proses');$('q').textContent=d[0]+' (ketuk kartu sesuai urutan)';$('fb').textContent='Ketuk kartu dari tahap pertama sampai terakhir. Ketuk lagi untuk membatalkan.';
+ const L=d[1].map((t,i)=>({t,i})).sort(()=>Math.random()-.5),sel=[];
+ L.forEach(o=>{const b=document.createElement('button');b.className='opt';b.innerHTML='<span class="bd"></span>'+o.t;o.b=b;b.onclick=()=>{const k=sel.indexOf(o);if(k>-1)sel.splice(k);else sel.push(o);L.forEach(x=>{const p=sel.indexOf(x);x.b.firstChild.textContent=p>-1?p+1:''});
+  if(sel.length===L.length){L.forEach(x=>x.b.classList.add(sel.indexOf(x)===x.i?'ok':'no'));endQ(sel.every((x,p)=>x.i===p),'Urutan benar: '+d[1].map((t,i)=>(i+1)+'. '+t).join('; ')+'.',15)}};$('opts').append(b)})}
+function askW(d){meta('Detektif kata');$('q').textContent='Ketuk kata hubung pada kalimat ini:';$('fb').textContent='Cari kata yang menunjukkan sebab-akibat atau urutan.';
+ const p=document.createElement('p'),cl=w=>w.toLowerCase().replace(/[.,]/g,'');
+ d[0].split(' ').forEach(w=>{const b=document.createElement('button');b.className='wd';b.textContent=w;b.onclick=()=>{const ok=d[1].includes(cl(w));[...p.children].forEach(x=>{if(d[1].includes(cl(x.textContent)))x.classList.add('ok')});if(!ok)b.classList.add('no');endQ(ok,'Kata hubungnya: '+d[1].join(', ')+'.',10)};p.append(b)});$('opts').append(p)}
+function ask(){const it=order[qi];GOLD=Math.random()<.2;CC=typeof it==='number'?Q[it][2]:0;$('qc').classList.toggle('gold',GOLD);board();react('think',rnd(TH),'Rani');startT(it.t==='d'?120000:0);
+ if(typeof it==='number')return askMC();
+ $('nx').style.display='none';$('opts').innerHTML='';if(it.t==='o')askO(it.d);else if(it.t==='d')askD(it.d);else askW(it.d)}
+function askMC(){const [q,o,c,cat]=Q[order[qi]];meta(cat);$('q').textContent=q;$('fb').textContent='Pikirkan baik-baik, lalu pilih satu jawaban.';$('nx').style.display='none';
+ $('opts').innerHTML='';o.forEach((t,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=String.fromCharCode(65+i)+'. '+t;b.onclick=()=>pick(i,c);$('opts').append(b)})}
+function pick(i,c){stopT();const bs=[...document.querySelectorAll('.opt')];bs.forEach((b,k)=>{b.disabled=true;if(k===c)b.classList.add('ok')});
+ if(i===c){sfx('ok');react('cheer',rnd(OK),Math.random()<.5?'Rani':'Budi');const p=pts(10);$('fb').textContent='🎉 Benar! '+teams[turn].n+' mendapat '+p+' poin. '+(Q[order[qi]][4]||'')}else{sfx('no');react('oops',rnd(NO),'Budi');teams[turn].k=0;if(bs[i])bs[i].classList.add('no');$('fb').textContent='💪 Belum tepat. Jawaban benar ditandai warna hijau. '+(Q[order[qi]][4]||'')}
+ board();$('nx').style.display='inline-block';$('nx').textContent=qi+1===order.length?'Lihat hasil':'Lanjut'}
+$('nx').onclick=()=>{qi++;if(qi>=order.length)return fin();turn=(turn+1)%teams.length;ask()};
+function confetti(){for(let i=0;i<32;i++){const s=document.createElement('span');s.className='cf';s.textContent=['🎉','⭐','🌈','🎈','✨'][i%5];s.style.left=Math.random()*100+'vw';s.style.animationDelay=Math.random()*1.5+'s';document.body.append(s);setTimeout(()=>s.remove(),5000)}}
+function fin(){confetti();sfx('win');$('play2').style.display='none';$('end').style.display='block';const t=teams[0],mx=order.reduce((a,x)=>a+(typeof x==='number'?10:x.t==='o'?15:x.t==='d'?20:10),0),r=t.s/mx;$('win').textContent=(r>=.8?'🏆 Luar biasa, ':r>=.5?'👍 Bagus, ':'💪 Ayo berlatih lagi, ')+t.n+'! Skor akhirmu '+t.s+'.';$('final').innerHTML=teams.map(t=>'<div class="team">'+t.n+'<b>'+t.s+'</b></div>').join('')}
+$('again').onclick=()=>{$('end').style.display='none';$('setup').style.display='block'};
+</script>
+</body>
+</html>
